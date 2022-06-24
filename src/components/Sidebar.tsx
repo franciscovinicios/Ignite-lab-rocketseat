@@ -36,7 +36,7 @@ export function Sidebar() {
           <Lesson
             key={lesson.id}
             title={lesson.title}
-            slug={lesson.slug}
+            slugPage={lesson.slug}
             type={lesson.lessonType}
             availableAt={new Date(lesson.availableAt)}
           />
