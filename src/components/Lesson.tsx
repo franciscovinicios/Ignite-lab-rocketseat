@@ -52,7 +52,7 @@ export function Lesson({ title, type, availableAt, slugPage }: LessonProps) {
             'border-white' : isActiveLesson,
             'border-green-300': !isActiveLesson
           })}>
-            {type === 'live' ? 'AO VIVO' : 'AULA PRÁTICA'}
+            {type === 'live' ?  'AO VIVO' : 'AULA PRÁTICA'}
           </span>
         </header>
 
