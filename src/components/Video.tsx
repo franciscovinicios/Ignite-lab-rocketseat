@@ -8,7 +8,7 @@ import { Button } from "./Button";
 import { Card } from "./Card";
 
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import { TailSpin,} from 'react-loader-spinner'
+import { TailSpin, } from 'react-loader-spinner'
 
 
 interface VideoProps {
@@ -77,11 +77,13 @@ export function Video({ lessonSlug }: VideoProps) {
 
           <div className=" flex flex-col  w-full md:w-auto gap-4">
             <Button
+              type="community"
               title="Comunidade do Discord"
               icon={<DiscordLogo size={24} />}
             />
 
             <Button
+              type="challenge"
               title="Acesse o desafio"
               icon={<Lightning size={24} />}
             />
