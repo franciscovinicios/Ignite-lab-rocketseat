@@ -22,8 +22,6 @@ export function Lesson({ title, type, availableAt, slugPage }: LessonProps) {
   const isActiveLesson = slug === slugPage
 
 
-
-
   return (
     <Link to={`/event/lesson/${slugPage}`} className="group">
       <span className="text-gray-300">
