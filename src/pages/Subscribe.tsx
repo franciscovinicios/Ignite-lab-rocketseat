@@ -20,7 +20,7 @@ export function Subscribe() {
 
 
     if(userLogged) {
-      navigate('/event')
+      navigate('/event/lesson/abertura')
     }
   },[])
 
@@ -39,7 +39,7 @@ export function Subscribe() {
       }
     })
     localStorage.setItem(userStorageKey, JSON.stringify(user));
-    navigate('/event')
+    navigate('/event/lesson/abertura')
   }
 
   return (
