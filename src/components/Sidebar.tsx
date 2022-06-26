@@ -1,27 +1,63 @@
-import { useGetLessonsQuery } from "../graphql/generated";
-import { Lesson } from "./Lesson";
-
+import { useGetLessonsQuery } from '../graphql/generated';
+import { useState } from 'react';
+import { Lesson } from './Lesson';
+import classNames from 'classnames';
+import { List, X } from 'phosphor-react';
 
 export function Sidebar() {
-  const { data } = useGetLessonsQuery()
+  const { data } = useGetLessonsQuery();
+  const [isOpen, setIsOpen] = useState(true);
 
   return (
-    <aside className="w-[348px] bg-gray-700 p-6 border-l border-gray-600">
-      <span className="font-bold text-2xl  pb-6 mb-6 border-b border-gray-500 block ">
-        Cronograma de aulas
-      </span>
+    <>
+      <div className="absolute top-5 right-10 z-60 lg:hidden flex items-center gap-2">
+        <span className="block text-md">Aulas</span>
 
-      <div className="flex flex-col gap-8">
-        {data?.lessons.map(lesson => (
-          <Lesson
-            key={lesson.id}
-            title={lesson.title}
-            slugPage={lesson.slug}
-            type={lesson.lessonType}
-            availableAt={new Date(lesson.availableAt)}
+        {isOpen ? (
+          <X
+            size={32}
+            className="text-blue-500 cursor-pointer"
+            onClick={() => setIsOpen(!isOpen)}
           />
-        ))}
+        ) : (
+          <List
+            size={32}
+            className="text-blue-500 cursor-pointer"
+            onClick={() => setIsOpen(!isOpen)}
+          />
+        )}
       </div>
-    </aside>
-  )
+
+      <aside
+        className={classNames(
+          'lg:relative lg:block lg:w-[21.75rem] bg-gray-700 p-2 border-l border-gray-600',
+          {
+            'block w-full min-h-[180vh] absolute z-50': isOpen,
+            'hidden ': !isOpen,
+          }
+        )}
+      >
+        <div className="h-full p-4 scrollbar-thumb-green-500 scrollbar-track-gray-700 scrollbar-thin flex-1">
+          <span className="font-bold text-2xl pb-6 mb-6 border-b border-gray-500 block">
+            Cronogramas de aulas
+          </span>
+          <div className="flex flex-col gap-8">
+            {data?.lessons.map((lesson) => {
+              return (
+                <div onClick={() => setIsOpen(!isOpen)}>
+                  <Lesson
+                    key={lesson.id}
+                    title={lesson.title}
+                    slugPage={lesson.slug}
+                    availableAt={new Date(lesson.availableAt)}
+                    type={lesson.lessonType}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </aside>
+    </>
+  );
 }
