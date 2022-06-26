@@ -3,30 +3,20 @@ import { useState } from 'react';
 import { Lesson } from './Lesson';
 import classNames from 'classnames';
 import { List, X } from 'phosphor-react';
+import { HamburguerButton } from './HamburguerButton';
 
 export function Sidebar() {
   const { data } = useGetLessonsQuery();
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+
+  
 
   return (
     <>
-      <div className="absolute top-5 right-10 z-60 lg:hidden flex items-center gap-2 ">
-        <span className="block text-md ">Aulas</span>
-
-        {isOpen ? (
-          <X
-            size={32}
-            className="text-blue-500 cursor-pointer"
-            onClick={() => setIsOpen(!isOpen)}
-          />
-        ) : (
-          <List
-            size={32}
-            className="text-blue-500 cursor-pointer "
-            onClick={() => setIsOpen(!isOpen)}
-          />
-        )}
-      </div>
+      <HamburguerButton
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+      />
 
       <aside
         className={classNames(

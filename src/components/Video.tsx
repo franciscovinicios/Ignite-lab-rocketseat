@@ -20,7 +20,6 @@ export function Video({ lessonSlug }: VideoProps) {
   const { data } = useGetLessonBySlugQuery({
     variables: {
       slug: lessonSlug
-
     }
   })
 

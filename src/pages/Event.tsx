@@ -14,10 +14,10 @@ export function Event() {
   useEffect(() => {
     const userLogged = localStorage.getItem(userStorageKey);
 
-    if(!userLogged) {
+    if (!userLogged) {
       navigate('/')
     }
-  },[])
+  }, [])
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -25,7 +25,7 @@ export function Event() {
       <main className="flex flex-1">
         {slug ?
           <Video lessonSlug={slug} />
-          : <div className="flex-1" />}
+          : <Video lessonSlug='abertura' />}
         <Sidebar />
       </main>
     </div>
