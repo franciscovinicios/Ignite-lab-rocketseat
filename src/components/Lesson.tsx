@@ -28,9 +28,9 @@ export function Lesson({ title, type, availableAt, slugPage }: LessonProps) {
 
         {availableDateFormatted}
       </span>
-      
-      <div className={classNames('rounded border border-gray-500 p-4 mt-2 group-hover:border-green-500',{
-        'bg-green-500' : isActiveLesson,
+
+      <div className={classNames('rounded border border-gray-500 p-4 mt-2 group-hover:border-green-500', {
+        'bg-green-500': isActiveLesson,
       })}>
         <header className="flex items-center justify-between">
           {isLessonAvailable ? (
@@ -41,22 +41,22 @@ export function Lesson({ title, type, availableAt, slugPage }: LessonProps) {
               <CheckCircle size={20} />
               Conteúdo liberado
             </span>
-          ) : <span className="text-sm text-orange-500 font-medium flex items-center gap-2">
+          ) : <span className="text-sm text-orange-500 font-medium flex items-center gap-2 ">
             <Lock size={20} />
             Em breve
-          </span>}
+            </span>}
 
           <span className={classNames('text-xs rounded py-[0.125rem] px-2 text-white border font-bold', {
-            'border-white' : isActiveLesson,
+            'border-white': isActiveLesson,
             'border-green-300': !isActiveLesson
           })}>
-            {type === 'live' ?  'AO VIVO' : 'AULA PRÁTICA'}
+            {type === 'live' ? 'AO VIVO' : 'AULA PRÁTICA'}
           </span>
         </header>
 
         <strong className={classNames('mt-5 block', {
-          'text-white' : isActiveLesson,
-          'text-gray-200' : !isActiveLesson
+          'text-white': isActiveLesson,
+          'text-gray-200': !isActiveLesson
         })}>{title}</strong>
       </div>
     </Link>

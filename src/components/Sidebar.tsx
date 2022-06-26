@@ -10,8 +10,8 @@ export function Sidebar() {
 
   return (
     <>
-      <div className="absolute top-5 right-10 z-60 lg:hidden flex items-center gap-2">
-        <span className="block text-md">Aulas</span>
+      <div className="absolute top-5 right-10 z-60 lg:hidden flex items-center gap-2 ">
+        <span className="block text-md ">Aulas</span>
 
         {isOpen ? (
           <X
@@ -22,7 +22,7 @@ export function Sidebar() {
         ) : (
           <List
             size={32}
-            className="text-blue-500 cursor-pointer"
+            className="text-blue-500 cursor-pointer "
             onClick={() => setIsOpen(!isOpen)}
           />
         )}
@@ -44,7 +44,7 @@ export function Sidebar() {
           <div className="flex flex-col gap-8">
             {data?.lessons.map((lesson) => {
               return (
-                <div onClick={() => setIsOpen(!isOpen)}>
+                <div key={lesson.id} onClick={() => setIsOpen(!isOpen)}>
                   <Lesson
                     key={lesson.id}
                     title={lesson.title}

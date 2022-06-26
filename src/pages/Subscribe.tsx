@@ -1,5 +1,5 @@
 import { gql, useMutation } from "@apollo/client";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Logo } from "../components/Logo";
 import { useCreateSubscriberMutation } from "../graphql/generated";
@@ -12,10 +12,26 @@ export function Subscribe() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
 
+  const userStorageKey = '@ignitelab:user'
+
   const [createSubscriber, { loading }] = useCreateSubscriberMutation()
+
+  useEffect(() => {
+    const userLogged = localStorage.getItem('@ignitelab:user');
+
+
+    if(userLogged) {
+      navigate('/event')
+    }
+  },[])
 
   async function handleSubscribe(event: FormEvent) {
     event.preventDefault()
+
+    const user = {
+      name,
+      email
+    }
 
     await createSubscriber({
       variables: {
@@ -23,7 +39,7 @@ export function Subscribe() {
         email,
       }
     })
-
+    localStorage.setItem(userStorageKey, JSON.stringify(user));
     navigate('/event')
   }
 

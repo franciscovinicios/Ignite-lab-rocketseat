@@ -8,7 +8,7 @@ import { Button } from "./Button";
 import { Card } from "./Card";
 
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import { Circles, Grid, TailSpin, ThreeDots} from 'react-loader-spinner'
+import { TailSpin,} from 'react-loader-spinner'
 
 
 interface VideoProps {
